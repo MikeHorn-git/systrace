@@ -1,10 +1,10 @@
 CC = gcc
-CFLAGS = -Wall -O3 -fstack-protector-strong -fPIE -D_FORTIFY_SOURCE=3 -fstack-clash-protection
+CFLAGS = -Wall -O3 -fstack-protector-strong -fPIE -D_FORTIFY_SOURCE=3 -fstack-clash-protection -Ilib
 DEBUGFLAGS = -g
 LDFLAGS = -pie -z noexecstack -Wl,-z,relro,-z,now
 TARGET = systrace
 TARGET_DEBUG = systrace_debug
-SRC = main.c
+SRC = src/systrace.c
 
 all: $(TARGET)
 
