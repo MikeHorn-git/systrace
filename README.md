@@ -1,8 +1,10 @@
-# Systrace
-Simple strace implementation in C.
+# Description
+Trace system calls of a given pid with ptrace(2) and waitpid(1).
 
-# Build
+# Installation
 ```bash
+git clone https://github.com/MikeHorn-git/systrace.git
+cd systrace
 make
 ```
 
@@ -15,5 +17,5 @@ Usage: ./systrace <pid>
 ```bash
 checksec --file=systrace
 RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH	Symbols		FORTIFY	Fortified	Fortifiable	FILE
-Full RELRO      Canary found      NX enabled    PIE enabled     No RPATH   No RUNPATH   No Symbols	Yes	2		2		systrace
+Full RELRO      Canary found      NX enabled    PIE enabled     No RPATH   No RUNPATH   No Symbols	Yes	1		1		systrace
 ```
