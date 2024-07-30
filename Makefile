@@ -5,6 +5,7 @@ LDFLAGS = -pie -z noexecstack -Wl,-z,relro,-z,now
 TARGET = systrace
 TARGET_DEBUG = systrace_debug
 SRC = src/systrace.c
+LIB = lib/syscalls.h
 
 all: $(TARGET)
 
@@ -17,7 +18,12 @@ debug: $(TARGET_DEBUG)
 $(TARGET_DEBUG): $(SRC)
 	$(CC) $(CFLAGS) $(DEBUGFLAGS) $(LDFLAGS) -o $(TARGET_DEBUG) $(SRC)
 
+format:
+	clang-format -i $(SRC) $(LIB)
+
 clean:
 	rm -f $(TARGET) $(TARGET_DEBUG)
 
-.PHONY: all clean debug
+fast: clean format all
+
+.PHONY: all debug format clean fast
