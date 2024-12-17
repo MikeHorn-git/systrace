@@ -7,6 +7,17 @@ TARGET_DEBUG = systrace_debug
 SRC = src/systrace.c
 LIB = lib/syscalls.h
 
+.DEFAULT_GOAL := help
+
+help:
+	@echo "Usage: make <target>"
+	@echo "Targets:"
+	@echo "  all      Build e release version"
+	@echo "  debug    Build debug version of $(TARGET_DEBUG)"
+	@echo "  format   Format source files using clang-format"
+	@echo "  clean    Remove generated binaries"
+	@echo "  fast     Clean, format, and build the release version"
+
 all: $(TARGET)
 
 $(TARGET): $(SRC)
